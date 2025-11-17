@@ -1,6 +1,9 @@
 # Bruno Docs 📝
 
-The official [Bruno Documentation](https://docs.usebruno.com/) repository.
+* hosted | [Bruno Documentation](https://docs.usebruno.com/)
+
+## documentation
+* [here](src/pages/_meta.js)
 
 ## Contributing
 
