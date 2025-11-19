@@ -7,14 +7,10 @@
 
 ## Contributing
 
-> [!NOTE]
+* TODO:
+
 > Ensure that Node.js (version 19 or higher) is installed before proceeding.
 
-1. Clone the repository.
-```shell
-git clone https://github.com/usebruno/bruno-docs.git
-cd bruno-docs
-```
 2. Install dependencies 
 ```shell
 npm install

@@ -1,30 +1,28 @@
-import { Callout } from "nextra/components";
-
 # Secrets Management
 
 ## Secret Variables
 
-<Callout type="info">
-Bruno stores secrets on your local machine. The location depends on the OS.
-The secrets are encrypted using OS level encryption when available or falls back to AES256 encryption.
-</Callout>
+* Bruno
+  * stores secrets | 👀your local machine👀 /
+    * 's location -- depends on the -- OS
+    * encrypted -- via --
+      * OS level encryption, OR
+      * by default, AES256 encryption
+    * managed internally
+      * == ❌NOT write them | environment file❌
+    * | export your collection as a file, 
+      * ❌Bruno does NOT export the secret variables❌
+    * | environment file,
+      * appears ONLY definition
+      * ❌NOT store the value❌
+      
+![secret variables](/public/screenshots/secret-variables.webp)
 
-In this approach, you can check the `secret` checkbox for any variable in your environment.
-Bruno will manage your secrets internally and will not write them into the environment file.
-
-![secret variables](/screenshots/secret-variables.webp)
-
-Your environment file at `environments/local.bru` would look like
-```bash filename="local.bru"
+```bru filename="environments/local.bru"
 vars {
   url: https://echo.usebruno.com
 }
 vars:secret [
   jwt-token
 ]
-
 ```
-
-And now you can safely check in your collection to source control without worrying about exposing your secrets.
-
-When you export your collection as a file, Bruno will not export the secret variables.

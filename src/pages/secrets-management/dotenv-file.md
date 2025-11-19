@@ -1,89 +1,77 @@
-import { FileTree } from "nextra/components";
-
 # Secrets Management
 
-## DotEnv File
+## DotEnv File (".env")
 
-Environment variables are used to store sensitive data such as API keys, tokens, and configuration settings outside the source code. This helps keep your code secure and makes it easier to manage different settings for various environments (e.g., local, staging, production).
-In **Bruno**, environment variables can be managed through `.env` files.
+* Environment variables
+  * way to manage them
+    * 👀-- through -- ".env" files👀
+  * uses
+    * store 
+      * sensitive data
+        * _Examples:_ API keys, tokens
+      * configuration settings -- outside the -- source code
+  * allows
+    * keep your code secure
+    * makes it easier -- to -- manage DIFFERENT settings / various environments
 
-## DotEnv File for Secret Management
+## DotEnv File (.env) -- for -- Secret Management
 
-In **Bruno**, you can store your secrets (e.g., API keys, JWT tokens) in a `.env` file located at the **root** of your collection folder. This approach is inspired by how developers typically manage secrets in their codebase.
+* create ⚠️MANUALLY⚠️ 
+  * | 💡**root** of your collection folder💡
+    * _Example of your folder collection structure:_ 
 
-You **cannot** create the `.env` file directly inside Bruno. You need to manually create the `.env` file at the **root** of your Bruno collection folder to store your secrets. Once created, you can access those variables within your Bruno collection.
+      ```
+      <FileTree.Folder name="bruno-collection" defaultOpen>
+        <FileTree.Folder name="api-folder">
+          <FileTree.Folder name="customer-api" />
+          <FileTree.Folder name="emp-api">
+            <FileTree.File name="details.bru" />
+          </FileTree.Folder>
+          <FileTree.File name="lib.js" />
+        </FileTree.Folder>
+        <FileTree.File name=".env" />
+        <FileTree.File name=".gitignore" />
+        <FileTree.File name="bruno.json" />
+        <FileTree.File name="package.json" />
+      </FileTree.Folder>
+      ```
+  * _Example of ".env":_
 
-### Folder Structure Example
+    ```filename=".env" showLineNumbers
+    JWT_TOKEN=your_jwt_token_value
+    API_KEY=your_api_key_value
+    ```
+  * ⚠️if the environment variables name contain dots -> use square bracket notation⚠️
+    * _Example:_
 
-Below is an example folder structure for your collection:
+      ```filename=.env
+      example.test=mysecretvalue
+      ```
 
-<FileTree.Folder name="bruno-collection" defaultOpen>
-  <FileTree.Folder name="api-folder">
-    <FileTree.Folder name="customer-api" />
-    <FileTree.Folder name="emp-api">
-      <FileTree.File name="details.bru" />
-    </FileTree.Folder>
-    <FileTree.File name="lib.js" />
-  </FileTree.Folder>
-  <FileTree.File name=".env" />
-  <FileTree.File name=".gitignore" />
-  <FileTree.File name="bruno.json" />
-  <FileTree.File name="package.json" />
-</FileTree.Folder>
+        ```javascript, fileName=local.bru
+        // NOT work
+        "secret": "{{process.env.demo.example.test}}"
+        
+        // Works
+        "secret": "{{process.env['example.test']}}"
+        ```
 
-## Creating and Using the `.env` File
+* way to access | your Bruno collection
+  * `process.env.secretName`
+    * _Example of environment file ("environments/local.bru"):_
 
-1. Create a `.env` file manually in the root of your collection folder. This file will store your sensitive environment variables.
+      ```filename="local.bru"
+      vars {
+        baseURL: https://echo.usebruno.com
+        JWT_TOKEN: {{process.env.JWT_TOKEN}}
+        API_KEY: {{process.env.API_KEY}}
+      }
+      ```
 
-2. Define your secrets in the `.env` file. For example:
-
-```bash filename=".env" showLineNumbers
-JWT_TOKEN=your_jwt_token_value
-API_KEY=your_api_key_value
-```
-
-These secrets will be accessible in your Bruno collection via the `process.env` object.
-
-![dot env vars](/screenshots/dot-env-vars.webp)
-
-Bruno will automatically load the secrets from this file and make them available to your collection via `process.env.<secret-name>`.
-
-Your environment file at `environments/local.bru` would look like
-
-```bash filename="local.bru"
-vars {
-  baseURL: https://echo.usebruno.com
-  JWT_TOKEN: {{process.env.JWT_TOKEN}}
-  API_KEY: {{process.env.API_KEY}}
-}
-
-```
-
-In this example, the `JWT_TOKEN` secret from the `.env` file is referenced using `process.env.JWT_TOKEN`. This will be replaced with the actual value of `JWT_TOKEN` when the collection is executed.
+      ![dot env vars](/public/screenshots/dot-env-vars.webp)
 
 ## Managing Secrets
 
-1. Always add the `.env` file to your `.gitignore` file to ensure secrets are not accidentally pushed to version control.
-
-2. If you need to share the structure of your environment variables with other developers, create a `.env.sample` file without actual secret values.
-
-### Handling Variables with Dots
-
-When using environment variables that contain dots in their names, use square bracket notation:
-
-```bash
-# In .env file
-example.test=mysecretvalue
-```
-
-```javascript
-// In your request
-// Won't work
-"secret": "{{process.env.demo.example.test}}"
-
-// Works correctly
-"secret": "{{process.env['example.test']}}"
-```
-
-This happens because Bruno interprets dots as object path separators. Square brackets tell Bruno to treat the entire string as a single variable name.
-
+* | ".gitignore",
+  * ⚠️add `.env` file⚠️
+    * if you want to share your environment variables structure -> create a ".env.sample" file WITHOUT actual secret values
