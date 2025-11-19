@@ -7,6 +7,8 @@
 
 ## Usage
 
+* structure / EACH configuration
+
 #### Vault server / token authentication
 
 ```json filename="secrets.json"
