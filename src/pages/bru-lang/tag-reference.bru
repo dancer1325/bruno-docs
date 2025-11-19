@@ -1,0 +1,192 @@
+# 1. meta
+
+meta {
+  name: Get users
+  type: http
+  seq: 1
+  tags: [
+    smoke
+    sanity
+  ]
+}
+
+
+# 2. get
+
+get {
+  url: https://api.github.com/users/usebruno
+}
+
+
+# 3. post
+
+post {
+  url: https://api.github.com/users/usebruno
+}
+
+
+# 4. put
+
+put {
+  url: https://api.github.com/users/usebruno
+}
+
+
+# 5. delete
+
+delete {
+  url: https://api.github.com/users/usebruno
+}
+
+
+# 6. options
+
+options {
+  url: https://api.github.com/users/usebruno
+}
+
+
+# 7. trace
+
+trace {
+  url: https://api.github.com/users/usebruno
+}
+
+
+# 8. connect
+
+connect {
+  url: https://api.github.com/users/usebruno
+}
+
+
+# 9. head
+
+head {
+  url: https://api.github.com/users/usebruno
+}
+
+
+# 10. query
+
+get {
+  url: https://api.textlocal.in/send?apiKey=secret&numbers=9988776655&message=hello
+}
+
+params:query {
+  apiKey: secret
+  numbers: 9988776655
+  message: hello
+}
+
+
+# 11. path
+
+get {
+  url: https://api.textlocal.in/user/:userId
+}
+
+params:path {
+  userId: 13
+}
+
+
+# 12. headers
+
+get {
+  url: https://api.textlocal.in/send?apiKey=secret&numbers=9988776655&message=hello
+}
+
+headers {
+  content-type: application/json
+  Authorization: Bearer topsecret
+}
+
+
+# 13. body
+
+body {
+  {
+    username: 'john',
+    password: 'governingdynamics'
+  }
+}
+
+
+# 14. body:text
+
+body:text {
+  This is a text body
+}
+
+
+# 15. body:xml
+
+body:xml {
+  <xml>
+    <name>John</name>
+    <age>30</age>
+  </xml>
+}
+
+
+# 16. body:form-urlencoded
+
+body:form-urlencoded {
+  apikey: secret
+  numbers: +91998877665
+  ~message: hello
+}
+
+
+# 17. body:multipart-form
+
+body:multipart-form {
+  apikey: secret
+  numbers: +91998877665
+  ~message: hello
+}
+
+
+# 18. body:graphql
+
+body:graphql {
+  {
+    launchesPast {
+      launch_site {
+        site_name
+      }
+      launch_success
+    }
+  }
+}
+
+
+# 19. body:graphql:vars
+
+body:graphql:vars {
+  {
+    "limit": 5
+  }
+}
+
+
+# 20. script:pre-request
+
+script:pre-request {
+  req.setHeader("Authorization", "{{token}}");
+}
+
+
+# 21. script:post-response
+
+script:post-response {
+  bru.setVar("token", res.body.token);
+}
+
+
+# 22. body:test
+
+body:test {
+  expect(res.status).to.equal(200);
+}
