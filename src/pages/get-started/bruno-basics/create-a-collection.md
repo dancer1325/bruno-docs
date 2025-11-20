@@ -9,10 +9,10 @@
 
 ## How to Create a Collection
 
-* | Bruno
+* | Bruno UI
   1. `···` > `Create Collection`
 
-    ![create collection dialog](/public/screenshots/get-started/bruno-basics/create-collection/bruno_collection-1.webp)
+    ![create collection dialog](../../../../public/screenshots/get-started/bruno-basics/create-collection/bruno_collection-1.webp)
 
   2. Name: choose one
      * | Bruno v1.40.0+,
@@ -20,4 +20,7 @@
          * if you use unsupported characters -> Bruno AUTOMATICALLY handles filesystem compatibility -- by replacing by -- `-`
   3. Location: choose one | your filesystem
 
-    ![create collection dialog](/public/screenshots/get-started/bruno-basics/create-collection/bruno_collection-2.webp)
+    ![create collection dialog](../../../../public//screenshots/get-started/bruno-basics/create-collection/bruno_collection-2.webp)
+
+* "bruno.json"
+  * 👀created AUTOMATICALLy👀

@@ -1,0 +1,31 @@
+meta {
+  name: testViaAssertions
+  type: http
+  seq: 2
+}
+
+get {
+  url: https://httpbin.org/get?param1=value1&param2=value2
+  body: none
+  auth: inherit
+}
+
+params:query {
+  param1: value1
+  param2: value2
+}
+
+assert {
+  res.status: eq 200
+  res.body.args.param1: eq value1
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+
+docs {
+  # NOT ALLOWED
+  res.body.args: length 2    
+}

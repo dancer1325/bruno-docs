@@ -1,0 +1,21 @@
+meta {
+  name: testViaJS
+  type: http
+  seq: 2
+}
+
+get {
+  url: https://httpbin.org/get?param1=value1&param2=value2
+  body: none
+  auth: inherit
+}
+
+params:query {
+  param1: value1
+  param2: value2
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

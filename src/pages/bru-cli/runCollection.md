@@ -49,19 +49,20 @@ bru run --iteration-count=2
 
 This will execute the collection twice. This is useful for load testing or when you need to repeat the same set of requests multiple times.
 
-## Running a Collection with Environments
+## Running a Collection -- with -- Environments
 
-You can run a collection using environment variables from either a `.bru` file or a `.json` file. This allows you to attach environments via the CLI from anywhere in the filesystem.
+* ALLOWED format types / store the environment variables
+  * [".bru" file](#using-environment-files)
+  * [".json" file](#using-json-environment-files)
+
+* `--env-file /path/to/environment.*` option
+  * ALLOWED /path/to/environment
+    * relative
+    * absolute
 
 ### Using Environment Files
 
-To run a collection with an environment file, use the `--env-file` option:
-
-```bash copy
-bru run --env-file /path/to/environment.bru
-```
-
-You can specify either a relative or absolute path to the environment file:
+* `bru run --env-file /path/to/environment.bru`
 
 ```bash copy
 # Using relative path
@@ -71,23 +72,16 @@ bru run --env-file ./environments/local.bru
 bru run --env-file /Users/username/projects/api-testing/environments/prod.bru
 ```
 
-<Callout type="info">
-  The environment file should be in Bruno's `.bru` format. Make sure the file contains valid environment variables and their values.
-</Callout>
-
 ### Using JSON Environment Files
 
-<Callout type="info">
-  This feature requires [Bruno CLI <strong><sup>↗</sup></strong>](https://www.npmjs.com/package/@usebruno/cli) version 2.13.0 or higher.
-</Callout>
+* requirements
+  * [Bruno CLI v2.13.0+](https://www.npmjs.com/package/@usebruno/cli)
 
-Bruno CLI now supports JSON environment files, which is particularly useful for global environments created in the Bruno app. This bridges the gap between UI-only global environments and CLI-based workflows.
+* use cases
+  * global environments / created | Bruno app
+    * == 👀bridges the gap BETWEEN UI-ONLY global environments -- & -- CLI-based workflows👀
 
-To use a JSON environment file:
-
-```bash copy
-bru run --env-file /path/to/environment.json
-```
+* `bru run --env-file /path/to/environment.json`
 
 #### JSON Environment File Format
 

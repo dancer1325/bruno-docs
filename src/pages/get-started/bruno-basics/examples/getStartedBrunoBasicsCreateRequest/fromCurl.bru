@@ -1,0 +1,25 @@
+meta {
+  name: fromCurl
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://httpbin.org/get?param1=value1&param2=value2
+  body: none
+  auth: inherit
+}
+
+params:query {
+  param1: value1
+  param2: value2
+}
+
+headers {
+  User-Agent: Bruno-Test
+  Accept: application/json
+}
+
+settings {
+  encodeUrl: false
+}

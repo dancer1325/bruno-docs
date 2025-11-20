@@ -1,8 +1,6 @@
 # Download Bruno
 
-## Installation Options
-
-Bruno can be installed via direct download or through package managers on supported platforms.
+## ways to download
 
 ### Direct Download
 
@@ -11,20 +9,23 @@ Bruno can be installed via direct download or through package managers on suppor
 ### Homebrew
     
 * `brew install bruno`
-  
+
 ### Chocolatey
 
 * `choco install bruno`
+
 ### **Winget**
 
 * `winget install Bruno.Bruno`
+
 ### **Scoop**
 
-* `scoop install bruno`
-   
+* `scoop install bruno` 
+
 ### **APT (Debian/Ubuntu)**
 
 * TODO: 
+```
     # Create keyrings directory
     sudo mkdir -p /etc/apt/keyrings
     
@@ -42,10 +43,12 @@ Bruno can be installed via direct download or through package managers on suppor
     
     # Update and install Bruno
     sudo apt update && sudo apt install bruno
-    ```
+```
+
 ### **Flatpak**
 
 * `flatpak install flathub com.usebruno.Bruno`
+
 ### **Snap**
 
 * `sudo snap install bruno`
