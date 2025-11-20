@@ -18,22 +18,19 @@
 
 * create ⚠️MANUALLY⚠️ 
   * | 💡**root** of your collection folder💡
-    * _Example of your folder collection structure:_ 
+    * _Example of your folder collection structure:_ TODO: clean OR refactor 
 
       ```
-      <FileTree.Folder name="bruno-collection" defaultOpen>
-        <FileTree.Folder name="api-folder">
-          <FileTree.Folder name="customer-api" />
-          <FileTree.Folder name="emp-api">
-            <FileTree.File name="details.bru" />
-          </FileTree.Folder>
-          <FileTree.File name="lib.js" />
-        </FileTree.Folder>
-        <FileTree.File name=".env" />
-        <FileTree.File name=".gitignore" />
-        <FileTree.File name="bruno.json" />
-        <FileTree.File name="package.json" />
-      </FileTree.Folder>
+      bruno-collection/
+      ├── api-folder/
+      │   ├── customer-api/
+      │   ├── emp-api/
+      │   │   └── details.bru
+      │   └── lib.js
+      ├── .env
+      ├── .gitignore
+      ├── bruno.json
+      └── package.json
       ```
   * _Example of ".env":_
 
