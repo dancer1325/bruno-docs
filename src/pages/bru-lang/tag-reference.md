@@ -6,7 +6,7 @@
 * `meta`
   * `seq`
     * uses
-      * sequence number
+      * sequence number | ⚠️IMMEDIATE parent folder⚠️
         * == 👀sort position of your request | UI👀
   * `type`
     * ALLOWED values

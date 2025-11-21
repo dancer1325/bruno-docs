@@ -15,6 +15,19 @@ params:query {
   param2: value2
 }
 
+tests {
+  test("should have 2 args", function () {
+    const data = res.getBody();
+    expect(Object.keys(data.args)).to.have.length(2);
+  });
+  
+  test("args should have expected properties", function () {
+    const data = res.getBody();
+    expect(data.args).to.have.all.keys('param1', 'param2');
+  });
+  
+}
+
 settings {
   encodeUrl: true
   timeout: 0
